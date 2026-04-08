@@ -19,6 +19,17 @@ log_buffer = []
 flush_queue = deque()
 next_flush_at = 0
 
+# 📊 STATS
+stats = {
+    "received": 0,
+    "flushed": 0,
+    "dropped": 0
+}
+
+last_time = time.time()
+last_flushed = 0
+last_received = 0
+
 
 def parse_ts(ts):
     try:
@@ -30,6 +41,15 @@ def parse_ts(ts):
 
 def handle(data, addr):
     raw = data.decode()
+
+    # total system load
+    depth = len(log_buffer) + len(flush_queue)
+
+    # DROP condition
+    if depth >= 2 * n:
+        stats["dropped"] += 1
+        return
+
     try:
         entry = json.loads(raw)
         ts_val = parse_ts(entry["timestamp"])
@@ -37,8 +57,9 @@ def handle(data, addr):
         ts_val = time.time()
 
     log_buffer.append((ts_val, raw))
+    stats["received"] += 1
 
-    # When buffer fills → sort
+    # sorting batch
     if len(log_buffer) >= n:
         log_buffer.sort(key=lambda x: x[0])
         flush_queue.extend(log_buffer)
@@ -62,7 +83,31 @@ def flush_logs():
     except:
         print(raw)
 
+    stats["flushed"] += 1
     next_flush_at = time.time() + FLUSH_DELAY
+
+
+def print_stats():
+    global last_time, last_flushed, last_received
+
+    now = time.time()
+
+    if now - last_time >= 1.0:
+        flushed_per_sec = stats["flushed"] - last_flushed
+        recv_per_sec = stats["received"] - last_received
+
+        print("\n--- STATS ---")
+        print(f"Throughput (processed): {flushed_per_sec} logs/sec")
+        print(f"Incoming rate:          {recv_per_sec} logs/sec")
+        print(f"Total received:         {stats['received']}")
+        print(f"Total flushed:          {stats['flushed']}")
+        print(f"Dropped logs:           {stats['dropped']}")
+        print(f"Buffer size:            {len(log_buffer) + len(flush_queue)}")
+        print("----------------\n")
+
+        last_time = now
+        last_flushed = stats["flushed"]
+        last_received = stats["received"]
 
 
 print(f"Server running on {HOST}:{PORT}")
@@ -76,4 +121,6 @@ while True:
         pass
 
     flush_logs()
+    print_stats()
+
     time.sleep(0.01)
