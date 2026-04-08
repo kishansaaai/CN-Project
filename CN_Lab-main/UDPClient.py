@@ -20,9 +20,11 @@ state = {
     "machine": args.name,
     "interval": args.interval,
     "running": True,
+    "rapid": False,
 }
 
 LEVELS = ["INFO", "DEBUG", "WARN", "ERROR"]
+
 
 def make_log():
     return {
@@ -35,41 +37,36 @@ def make_log():
 
 def send_loop():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.settimeout(0.5)
 
     while True:
         if not state["running"]:
-            time.sleep(0.5)
+            time.sleep(0.2)
             continue
 
         sock.sendto(json.dumps(make_log()).encode(), (HOST, PORT))
 
-        try:
-            data, _ = sock.recvfrom(64)
-            signal = data.decode()
-
-            if signal == "STOP":
-                print("[STOP] Pausing...")
-                time.sleep(5)
-
-            elif signal == "SLOW_DOWN":
-                state["interval"] *= 2
-                print(f"[SLOW DOWN] Interval = {state['interval']}")
-        except:
-            pass
-
-        time.sleep(state["interval"])
+        delay = 0.05 if state["rapid"] else state["interval"]
+        time.sleep(delay)
 
 
 def input_loop():
-    while True:
-        cmd = input("Enter (start/stop/exit): ").strip().lower()
+    print("\nCommands:")
+    print("s → start/pause")
+    print("f → rapid fire")
+    print("q → quit\n")
 
-        if cmd == "start":
-            state["running"] = True
-        elif cmd == "stop":
-            state["running"] = False
-        elif cmd == "exit":
+    while True:
+        cmd = input(">> ").strip().lower()
+
+        if cmd == "s":
+            state["running"] = not state["running"]
+            print("Running" if state["running"] else "Paused")
+
+        elif cmd == "f":
+            state["rapid"] = not state["rapid"]
+            print("Rapid ON" if state["rapid"] else "Rapid OFF")
+
+        elif cmd == "q":
             break
 
 
