@@ -1,0 +1,67 @@
+  11:55:00.761  WARN      [Machine-A]  Memory at 54%
+  11:55:02.068  INFO      [Machine-A]  Request completed in 962ms
+  11:55:03.375  INFO      [Machine-A]  Request completed in 376ms
+  11:55:07.090  INFO      [Machine-A]  Request completed in 494ms
+  11:55:08.393  ERROR     [Machine-A]  Write failed: constraint
+  11:55:09.698  INFO      [Machine-A]  Request completed in 82ms
+  11:55:11.003  DEBUG     [Machine-A]  Retry attempt 143/3
+  11:55:11.355  INFO      [Machine-A]  Request completed in 890ms
+  11:55:11.719  WARN      [Machine-A]  Slow query: 868ms
+  11:55:12.081  INFO      [Machine-A]  Request completed in 999ms
+  11:55:12.442  INFO      [Machine-A]  Startup OK
+  11:55:12.805  WARN      [Machine-A]  Queue depth: 288
+  11:55:13.167  WARN      [Machine-A]  Slow query: 914ms
+  11:55:13.531  INFO      [Machine-A]  Cache hit ratio 416%
+  11:55:13.894  WARN      [Machine-A]  Queue depth: 375
+  11:55:18.680  INFO      [Machine-A]  Cache hit ratio 114%
+  11:55:19.043  ERROR     [Machine-A]  Token expired
+  11:55:19.405  WARN      [Machine-A]  Memory at 755%
+  11:55:19.766  INFO      [Machine-A]  Cache hit ratio 952%
+  11:55:20.132  INFO      [Machine-A]  Config reloaded
+  11:55:20.493  INFO      [Machine-A]  Config reloaded
+  11:55:20.852  INFO      [Machine-A]  Cache hit ratio 139%
+  11:55:21.212  DEBUG     [Machine-A]  Retry attempt 233/3
+  11:55:21.573  INFO      [Machine-A]  Startup OK
+  11:55:21.936  DEBUG     [Machine-A]  Query returned 53 rows
+  11:55:22.297  ERROR     [Machine-A]  Write failed: constraint
+  11:55:23.663  INFO      [Machine-A]  Config reloaded
+  11:55:24.029  INFO      [Machine-A]  Request completed in 339ms
+  11:55:24.389  WARN      [Machine-A]  Queue depth: 25
+  11:55:24.754  DEBUG     [Machine-A]  Retry attempt 124/3
+  11:55:25.115  DEBUG     [Machine-A]  Query returned 672 rows
+  11:55:25.477  INFO      [Machine-A]  Cache hit ratio 507%
+  11:55:25.835  DEBUG     [Machine-A]  Retry attempt 267/3
+  11:55:26.197  WARN      [Machine-A]  Slow query: 491ms
+  11:55:26.559  WARN      [Machine-A]  Slow query: 596ms
+  11:55:26.921  INFO      [Machine-A]  Config reloaded
+  11:55:27.277  INFO      [Machine-A]  Request completed in 824ms
+  11:55:27.637  ERROR     [Machine-A]  Write failed: constraint
+  11:55:27.999  ERROR     [Machine-A]  Token expired
+  11:55:28.357  INFO      [Machine-A]  Config reloaded
+  11:55:28.719  INFO      [Machine-A]  Startup OK
+  11:55:29.078  INFO      [Machine-A]  Startup OK
+  11:55:29.439  WARN      [Machine-A]  Slow query: 99ms
+  11:55:29.801  INFO      [Machine-A]  Request completed in 658ms
+  11:55:30.163  DEBUG     [Machine-A]  Retry attempt 815/3
+  11:55:30.525  INFO      [Machine-A]  Cache hit ratio 914%
+  11:55:30.889  WARN      [Machine-A]  Slow query: 413ms
+  11:55:31.252  DEBUG     [Machine-A]  Buffer flushed (866 bytes)
+  11:55:31.611  INFO      [Machine-A]  Request completed in 589ms
+  11:55:31.973  ERROR     [Machine-A]  Token expired
+  11:55:32.333  DEBUG     [Machine-A]  Buffer flushed (879 bytes)
+  11:55:32.692  INFO      [Machine-A]  Cache hit ratio 259%
+  11:55:33.052  INFO      [Machine-A]  Cache hit ratio 503%
+  11:55:33.415  DEBUG     [Machine-A]  Retry attempt 477/3
+  11:55:33.773  INFO      [Machine-A]  Request completed in 730ms
+  11:55:34.134  DEBUG     [Machine-A]  Buffer flushed (43 bytes)
+  11:55:34.493  INFO      [Machine-A]  Request completed in 757ms
+  11:55:34.853  WARN      [Machine-A]  Queue depth: 368
+  11:55:35.215  DEBUG     [Machine-A]  Retry attempt 717/3
+  11:55:35.575  INFO      [Machine-A]  Cache hit ratio 615%
+  11:55:35.933  ERROR     [Machine-A]  Write failed: constraint
+  11:55:36.299  WARN      [Machine-A]  Memory at 482%
+  11:55:36.658  DEBUG     [Machine-A]  Retry attempt 663/3
+  11:55:37.024  WARN      [Machine-A]  Queue depth: 928
+  11:55:37.384  INFO      [Machine-A]  Request completed in 979ms
+  11:55:37.747  INFO      [Machine-A]  Startup OK
+  11:55:38.110  INFO      [Machine-A]  Cache hit ratio 919%
